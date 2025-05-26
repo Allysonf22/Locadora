@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Nossos Carros</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    body {
+      background-color: #fff7f5;
+      font-family: 'Roboto', sans-serif;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+      margin: 0;
+    }
+
+    .navbar {
+      background-image: linear-gradient(to right, #F8F8F8, #AB001D);
+    }
+
+    .btn-login {
+      color: #000000;
+    }
+
+    .btn-login:hover,
+    #cadastro:hover {
+      color: #ffffff;
+    }
+        h4 {
+        text-align: center;
+        padding: 20px;
+        margin-top: 40px; /* Espaçamento superior */
+        font-weight: bold;
+        font-size: 1.75rem; /* Tamanho da fonte aumentado */
+        text-transform: uppercase; /* Transformação do texto */
+        letter-spacing: 1px; /* Espaçamento entre letras */
+        color: #000000; /* Cor do texto */
+    }
+
+    .container {
+        max-width: 1200px; /* Largura máxima */
+        margin: 0 auto; /* Centraliza a container */
+        padding: 20px; /* Espaçamento interno */
+    }
+
+    .row {
+        margin: 0; /* Remove margens da linha */
+    }
+
+    .card {
+        margin-bottom: 30px; /* Espaçamento inferior entre os cards */
+        border: 1px solid #dee2e6; /* Borda dos cards */
+        border-radius: 0.5rem; /* Bordas arredondadas */
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra suave */
+        transition: transform 0.3s, box-shadow 0.3s; /* Animação ao passar o mouse */
+    }
+
+    .card:hover {
+        transform: scale(1.05); /* Aumenta o card ao passar o mouse */
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2); /* Aumenta a sombra ao passar o mouse */
+    }
+
+    .card-img-top {
+        border-top-left-radius: 0.5rem; /* Bordas arredondadas */
+        border-top-right-radius: 0.5rem;
+        height: 200px; /* Altura fixa da imagem */
+        object-fit: cover; /* Cobre o espaço sem distorção */
+    }
+
+    .card-body {
+        padding: 20px; /* Espaçamento interno do card */
+    }
+
+    .card-title {
+        font-size: 1.25rem; /* Tamanho da fonte do título */
+        color: #495057; /* Cor do título */
+    }
+
+    .card-text {
+        font-size: 1rem; /* Tamanho da fonte do texto */
+        margin: 10px 0; /* Margens no texto */
+    }
+
+    .btn-primary {
+        background-color: #007bff; /* Cor do botão */
+        border: none; /* Remove borda */
+        border-radius: 0.5rem; /* Bordas arredondadas */
+        padding: 10px 15px; /* Espaçamento interno do botão */
+        transition: background-color 0.3s; /* Animação ao passar o mouse */
+    }
+
+    .btn-primary:hover {
+        background-color: #0056b3; /* Cor do botão ao passar o mouse */
+    }
+
+    
+
+    .no-car {
+        text-align: center; /* Centraliza mensagem de ausência de carros */
+        font-size: 1.1rem; /* Aumenta o tamanho da fonte */
+        color: #6c757d; /* Cor de texto mais suave */
+    }
+    hr {
+    border: 0; /* Remove a borda padrão */
+    height: 2px; /* Define a altura da linha */
+    background-color: #000000; /* Cor da linha */
+    margin: 40px 0; /* Espaçamento vertical */
+    width: 100%; /* Largura total do contêiner */
+}
+ #sair:hover{
+        color: white;
+    }
+ footer{
+        background-image: linear-gradient(to right,#F8F8F8, #AB001D);
+        color: #000000; padding: 20px; text-align: center; font-family: Arial, sans-serif;
+        margin-top: auto;
+        width: 100%;
+        bottom: 0;
+        text-decoration: none;
+    }
+    footer strong{
+        color: #000000;
+    }
+    footer a {
+        color: rgb(0, 0, 0); 
+        text-decoration: none;
+    }
+
+    /* Estilo para hover */
+    footer a:hover {
+        color: white; /* Cor do texto ao passar o mouse */
+        text-decoration: none; /* Adiciona sublinhado se desejado */
+    }
+    
+    
+  </style>
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-light">
+  <div class="container-fluid">
+    <a href="index.html" class="navbar-brand">
+      <img src="img/grandprix.png" alt="Logo da Locadora" style="width: 100px; height: auto;">
+    </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+      aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item"><a class="nav-link" href="index.html"><h5>Início</h5></a></li>
+        <li class="nav-item"><a class="nav-link" href="carros.html"><h5>Carros</h5></a></li>
+        <li class="nav-item"><a class="nav-link" href="sobre.html"><h5>Sobre Nós</h5></a></li>
+      </ul>
+      <ul class="navbar-nav" id="userNav">
+        <!-- Aqui o nome do usuário será inserido dinamicamente -->
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  <div class="container">
+    <h4>Hatchs</h4>
+    <div class="row">
+        
+            <div class="col-sm-12 col-md-6 col-lg-4">
+                <div class="card">
+                    
+                        <img src="img/polot.png" alt="polo" class="card-img-top">
+                   
+                    <div class="card-body">
+                        <h5 class="card-title">Polo</h5>
+                        <p class="card-text">R$2000 </p>
+                        <a href="detalhespolo.html" class="btn btn-primary">Visitar</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-12 col-md-6 col-lg-4">
+                <div class="card">
+                    
+                        <img src="img/argo.png" alt="argo" class="card-img-top">
+                   
+                    <div class="card-body">
+                        <h5 class="card-title">Argo</h5>
+                        <p class="card-text">R$2000 </p>
+                        <a href="detalhesargo.html" class="btn btn-primary">Visitar</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-12 col-md-6 col-lg-4">
+                <div class="card">
+                    
+                        <img src="img/onixltt.png" alt="onixlt" class="card-img-top">
+                   
+                    <div class="card-body">
+                        <h5 class="card-title">Onix LT</h5>
+                        <p class="card-text">R$2000 </p>
+                        <a href="detalhesonixlt.html" class="btn btn-primary">Visitar</a>
+                    </div>
+                </div>
+            </div>
+           
+        
+    </div>
+
+    <hr>
+
+    <h4>Sedans</h4>
+    <div class="row">
+       
+            <div class="col-sm-12 col-md-6 col-lg-4">
+                <div class="card">
+                    
+                        <img src="img/cobalt2.png" alt="cobalt" class="card-img-top">
+                 
+                    <div class="card-body">
+                        <h5 class="card-title">Cobalt LT</h5>
+                        <p class="card-text">R$2500 </p>
+                        <a href="detalhescobalt.html" class="btn btn-primary">Visitar</a>
+                    </div>
+                </div>
+            </div>
+              <div class="col-sm-12 col-md-6 col-lg-4">
+                <div class="card">
+                    
+                        <img src="img/jetta2.png" alt="{{ carro.modelo }}" class="card-img-top">
+                 
+                    <div class="card-body">
+                        <h5 class="card-title">Jetta Gli</h5>
+                        <p class="card-text">R$2500 </p>
+                        <a href="detalhesjetta.html" class="btn btn-primary">Visitar</a>
+                    </div>
+                </div>
+            </div>
+              <div class="col-sm-12 col-md-6 col-lg-4">
+                <div class="card">
+                    
+                        <img src="img/onixp.png" alt="{{ carro.modelo }}" class="card-img-top">
+                 
+                    <div class="card-body">
+                        <h5 class="card-title">Onix Plus</h5>
+                        <p class="card-text">R$2500 </p>
+                        <a href="detalhesonixp.html" class="btn btn-primary">Visitar</a>
+                    </div>
+                </div>
+            </div>
+        
+    </div>
+
+   <hr>
+
+    <h4>4X4</h4>
+    <div class="row">
+        
+            <div class="col-sm-12 col-md-6 col-lg-4">
+                <div class="card">
+                    
+                        <img src="img/amarok.jfif" alt="{{ carro.modelo }}" class="card-img-top">
+                    
+                    <div class="card-body">
+                        <h5 class="card-title">Amarok</h5>
+                        <p class="card-text">R$3000,00 </p>
+                        <a href="detalhesamarok.html" class="btn btn-primary">Visitar</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-12 col-md-6 col-lg-4">
+                <div class="card">
+                    
+                        <img src="img/s10t.png" alt="{{ carro.modelo }}" class="card-img-top">
+                    
+                    <div class="card-body">
+                        <h5 class="card-title">S10</h5>
+                        <p class="card-text">R$3000,00 </p>
+                        <a href="detalhess10.html" class="btn btn-primary">Visitar</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-12 col-md-6 col-lg-4">
+                <div class="card">
+                    
+                        <img src="img/ranger2.png" alt="{{ carro.modelo }}" class="card-img-top">
+                    
+                    <div class="card-body">
+                        <h5 class="card-title">Ranger</h5>
+                        <p class="card-text">R$3000,00 </p>
+                        <a href="detalhesranger.html" class="btn btn-primary">Visitar</a>
+                    </div>
+                </div>
+            </div>
+      
+          
+        
+    </div>
+</div>
+
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+  <script>
+  // Verifica se há um nome de usuário no localStorage
+  const nomeUsuario = localStorage.getItem("nomeUsuario");
+
+  // Se houver, substitui os itens de login e cadastro pelo nome do usuário
+  if (nomeUsuario) {
+    const userNav = document.getElementById('userNav');
+    userNav.innerHTML = `
+      <li class="nav-item">
+        <span class="nav-link"><h5>Olá, ${nomeUsuario}</h5></span>
+      </li>
+      <li class="nav-item">
+        <a href="logout.html" class="nav-link" id="sair"><h5>Sair</h5></a>
+      </li>
+    `;
+  } else {
+    // Se não houver, exibe as opções de login e cadastro
+    const userNav = document.getElementById('userNav');
+    userNav.innerHTML = `
+      <li class="nav-item"><a href="login.html" class="nav-link btn-login"><h5>Login</h5></a></li>
+      <li class="nav-item"><a class="nav-link" href="cadastro.html" id="cadastro"><h5>Cadastro</h5></a></li>
+    `;
+  }
+</script>
+  
+<footer class="footer bg-secondary ">
+    <strong><p>Copyright © 2024 Locadora Grand Prix. Todos os direitos reservados.</p></strong>
+    <strong><p><a href="privacidade.html" >Política de Privacidade</a> | <a href="cookies.html" >Política de Cookies</a></p></strong>
+</footer>
+</body>
+</html>

@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Cadastro de Usuário</title>
+
+  <!-- Bootstrap -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+
+  <style>
+    body {
+      background-color: #fff7f5;
+      font-family: 'Roboto', sans-serif;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+      margin: 0;
+    }
+
+    .navbar {
+      background-image: linear-gradient(to right, #f8f8f8, #ab001d)
+    }
+
+    .btn-login, #cadastro {
+      color: #000000;
+    }
+
+    .btn-login:hover, #cadastro:hover {
+      color: #ffffff;
+    }
+
+    .container {
+      background-color: #ffffff;
+      border-radius: 10px;
+      padding: 40px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+      margin: 3% auto;
+      max-width: 700px;
+    }
+
+    h1 {
+      font-weight: 700;
+      margin-bottom: 30px;
+    }
+
+    .form-control {
+      margin-bottom: 20px;
+    }
+
+    #enviar, #limpar {
+      background-image: linear-gradient(to right, #0056b3, #1e90ff);
+      color: #ffffe1;
+      border: none;
+      transition: background 0.3s ease;
+      width: 100%;
+    }
+
+    #enviar:hover, #limpar:hover {
+      background-image: linear-gradient(to right, #0056b3, #1e90ff);
+    }
+
+    footer {
+      background-image: linear-gradient(to right, #f8f8f8, #ab001d);
+      color: #000;
+      text-align: center;
+      padding: 20px;
+      margin-top: auto;
+      font-size: 0.95rem;
+    }
+
+    footer a {
+      color: #000;
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+
+    footer a:hover {
+      color: #fff;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-light">
+    <div class="container-fluid">
+      <a href="index.html" class="navbar-brand">
+        <img src="img/grandprix.png" alt="Logo da Locadora" style="width: 100px; height: auto;">
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav me-auto">
+          <li class="nav-item"><a class="nav-link" href="index.html"><h5>Início</h5></a></li>
+          <li class="nav-item"><a class="nav-link" href="carros.html"><h5>Carros</h5></a></li>
+          <li class="nav-item"><a class="nav-link" href="sobre.html"><h5>Sobre Nós</h5></a></li>
+        </ul>
+        <ul class="navbar-nav">
+          <li class="nav-item"><a class="nav-link btn-login" href="login.html"><h5>Login</h5></a></li>
+          <li class="nav-item"><a class="nav-link" id="cadastro" href="cadastro.html"><h5>Cadastro</h5></a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Formulário -->
+  <div class="container">
+    <h1 class="text-center">Cadastro de Usuário</h1>
+    <form id="cadastro-form">
+      <input type="text" class="form-control form-control-lg shadow-sm" name="nome" placeholder="Nome completo" required>
+      <input type="email" class="form-control form-control-lg shadow-sm" name="email" placeholder="E-mail" required>
+      <input type="text" class="form-control form-control-lg shadow-sm" name="login" placeholder="Login" required>
+      <input type="password" class="form-control form-control-lg shadow-sm" name="senha" placeholder="Senha" required>
+      <input type="password" class="form-control form-control-lg shadow-sm" name="confirmacao_senha" placeholder="Confirmação de Senha" required>
+
+      <input type="text" class="form-control form-control-lg shadow-sm" name="cep" id="cep" placeholder="CEP" maxlength="9" required>
+      <input type="text" class="form-control form-control-lg shadow-sm" name="rua" id="rua" placeholder="Rua" readonly>
+      <input type="text" class="form-control form-control-lg shadow-sm" name="bairro" id="bairro" placeholder="Bairro" readonly>
+      <input type="text" class="form-control form-control-lg shadow-sm" name="cidade" id="cidade" placeholder="Cidade" readonly>
+      <input type="text" class="form-control form-control-lg shadow-sm" name="estado" id="estado" placeholder="Estado" readonly>
+
+      <input type="text" class="form-control form-control-lg shadow-sm" name="telefone_fixo" id="telefone_fixo" placeholder="Telefone fixo" required>
+      <input type="text" class="form-control form-control-lg shadow-sm" name="telefone_celular" id="telefone_celular" placeholder="Telefone celular" required>
+
+      <input type="date" class="form-control form-control-lg shadow-sm" name="data_nascimento" required>
+      <input type="text" class="form-control form-control-lg shadow-sm" name="nome_mae" placeholder="Nome da Mãe" required>
+      
+
+      <button type="submit" class="btn btn-primary btn-lg mt-3" id="enviar">Enviar</button>
+      <button type="reset" class="btn btn-danger btn-lg mt-3" id="limpar">Limpar</button>
+    </form>
+  </div>
+
+  <!-- Scripts -->
+  <script>
+    const cepInput = document.getElementById('cep');
+    const telefoneCelularInput = document.getElementById('telefone_celular');
+    const telefoneFixoInput = document.getElementById('telefone_fixo');
+
+    // Máscara para CEP
+    cepInput.addEventListener('input', function () {
+      let cep = this.value.replace(/\D/g, '');
+      if (cep.length > 5) {
+        cep = cep.slice(0, 5) + '-' + cep.slice(5, 8);
+      }
+      this.value = cep;
+    });
+
+    cepInput.addEventListener('blur', function () {
+      const cep = this.value.replace(/\D/g, '');
+      if (cep.length === 8) {
+        fetch(`https://viacep.com.br/ws/${cep}/json/`)
+          .then(res => res.json())
+          .then(data => {
+            if (!data.erro) {
+              document.getElementById('rua').value = data.logradouro || '';
+              document.getElementById('bairro').value = data.bairro || '';
+              document.getElementById('cidade').value = data.localidade || '';
+              document.getElementById('estado').value = data.uf || '';
+            } else {
+              alert('CEP não encontrado.');
+            }
+          })
+          .catch(() => alert('Erro ao buscar o CEP.'));
+      }
+    });
+
+    // Máscara para Telefone (formato brasileiro)
+    telefoneCelularInput.addEventListener('input', function () {
+      let telefone = this.value.replace(/\D/g, '');
+      if (telefone.length > 11) telefone = telefone.slice(0, 11);
+      if (telefone.length > 6) {
+        telefone = `(${telefone.slice(0, 2)}) ${telefone.slice(2, 7)}-${telefone.slice(7)}`;
+      } else if (telefone.length > 2) {
+        telefone = `(${telefone.slice(0, 2)}) ${telefone.slice(2)}`;
+      } else if (telefone.length > 0) {
+        telefone = `(${telefone}`;
+      }
+      this.value = telefone;
+    });
+
+    telefoneFixoInput.addEventListener('input', function () {
+      let telefone = this.value.replace(/\D/g, '');
+      if (telefone.length > 10) telefone = telefone.slice(0, 10);
+      if (telefone.length > 6) {
+        telefone = `(${telefone.slice(0, 2)}) ${telefone.slice(2, 6)}-${telefone.slice(6)}`;
+      } else if (telefone.length > 2) {
+        telefone = `(${telefone.slice(0, 2)}) ${telefone.slice(2)}`;
+      } else if (telefone.length > 0) {
+        telefone = `(${telefone}`;
+      }
+      this.value = telefone;
+    });
+
+    // Cadastro de usuário
+    document.getElementById('cadastro-form').addEventListener('submit', function(event) {
+      event.preventDefault();
+
+      const nome = event.target.nome.value;
+      const email = event.target.email.value;
+      const senha = event.target.senha.value;
+      const confirmacao_senha = event.target.confirmacao_senha.value;
+      const cep = event.target.cep.value;
+      const rua = event.target.rua.value;
+      const bairro = event.target.bairro.value;
+      const cidade = event.target.cidade.value;
+      const estado = event.target.estado.value;
+      const telefoneFixo = event.target.telefone_fixo.value;
+      const telefoneCelular = event.target.telefone_celular.value;
+      const dataNascimento = event.target.data_nascimento.value;
+      const nomeMae = event.target.nome_mae.value;
+      const login = event.target.login.value;
+
+      if (senha !== confirmacao_senha) {
+        alert('A senha e a confirmação de senha não coincidem.');
+        return;
+      }
+
+      const usuario = {
+        nome,
+        email,
+        login,
+        senha,
+        cep,
+        rua,
+        bairro,
+        cidade,
+        estado,
+        telefoneFixo,
+        telefoneCelular,
+        dataNascimento,
+        nomeMae
+        
+      };
+
+      // Verifica se já existe um cadastro de usuário e cria ou adiciona o novo
+      let usuarios = JSON.parse(localStorage.getItem('usuarios')) || [];
+      usuarios.push(usuario);
+
+      // Salvar no localStorage
+      localStorage.setItem('usuarios', JSON.stringify(usuarios));
+
+      alert('Cadastro realizado com sucesso!');
+      window.location.href = 'login.html';  // Redirecionar para a página de login
+    });
+  </script>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+  <!-- Footer -->
+  <footer>
+    <p><strong>© 2024 Locadora Grand Prix. Todos os direitos reservados.</strong></p>
+    <p><strong><a href="privacidade.html">Política de Privacidade</a> | <a href="cookies.html">Política de Cookies</a></strong></p>
+  </footer>
+</body>
+</html>
